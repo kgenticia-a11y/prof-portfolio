@@ -53,6 +53,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="sr-only" role="status" aria-live="polite" data-anchor-status></div>
 
   <div id="scroll-progress" class="scroll-progress" aria-hidden="true">
     <span class="scroll-progress__bar"></span>
@@ -130,7 +131,7 @@
       <div class="container about__grid">
         <div class="about__intro">
           <p class="eyebrow reveal">About</p>
-          <h2 id="about-title" class="section-title reveal">From first principles to markets.</h2>
+          <h2 id="about-title" class="section-title reveal">From first principles to markets.<button class="anchor-link" data-anchor="about" aria-label="Copy link to About section">#</button></h2>
           <div class="about__body stack reveal">
             <p>
               Physics trains you to break a hard problem down to first principles
@@ -167,7 +168,7 @@
     <section id="focus" class="section" aria-labelledby="focus-title">
       <div class="container">
         <p class="eyebrow reveal">Focus</p>
-        <h2 id="focus-title" class="section-title reveal">Where his attention goes.</h2>
+        <h2 id="focus-title" class="section-title reveal">Where his attention goes.<button class="anchor-link" data-anchor="focus" aria-label="Copy link to Focus section">#</button></h2>
 
         <ul role="list" class="focus-grid">
           <li class="focus-card reveal">
@@ -205,7 +206,19 @@
     <section id="work" class="section" aria-labelledby="work-title">
       <div class="container">
         <p class="eyebrow reveal">Selected work</p>
-        <h2 id="work-title" class="section-title reveal">Products, built to learn how systems work.</h2>
+        <h2 id="work-title" class="section-title reveal">Products, built to learn how systems work.<button class="anchor-link" data-anchor="work" aria-label="Copy link to Selected work section">#</button></h2>
+
+        <!-- Decorative only: real ticker symbols, no prices or invented figures. -->
+        <div class="ticker reveal" aria-hidden="true">
+          <div class="ticker__track">
+            <span class="ticker__list">
+              <span>AAPL</span><span>MSFT</span><span>GOOGL</span><span>AMZN</span><span>NVDA</span><span>TSLA</span><span>JPM</span><span>GS</span><span>BRK.B</span><span>SPY</span><span>QQQ</span><span>DIA</span>
+            </span>
+            <span class="ticker__list">
+              <span>AAPL</span><span>MSFT</span><span>GOOGL</span><span>AMZN</span><span>NVDA</span><span>TSLA</span><span>JPM</span><span>GS</span><span>BRK.B</span><span>SPY</span><span>QQQ</span><span>DIA</span>
+            </span>
+          </div>
+        </div>
 
         <div class="case-list">
           <article class="case-card reveal">
@@ -282,7 +295,7 @@
     <section id="impact" class="section impact-band" aria-labelledby="impact-title">
       <div class="container">
         <p class="eyebrow reveal">Impact</p>
-        <h2 id="impact-title" class="section-title reveal">Numbers behind the work.</h2>
+        <h2 id="impact-title" class="section-title reveal">Numbers behind the work.<button class="anchor-link" data-anchor="impact" aria-label="Copy link to Impact section">#</button></h2>
 
         <ul role="list" class="stat-grid">
           <li class="stat-block reveal">
@@ -316,7 +329,7 @@
     <section id="writing" class="section" aria-labelledby="writing-title">
       <div class="container">
         <p class="eyebrow reveal">Writing</p>
-        <h2 id="writing-title" class="section-title reveal">A point of view, not just a résumé.</h2>
+        <h2 id="writing-title" class="section-title reveal">A point of view, not just a résumé.<button class="anchor-link" data-anchor="writing" aria-label="Copy link to Writing section">#</button></h2>
         <p class="writing-intro reveal">
           He reads the Financial Times and Wall Street Journal daily, and
           writes on LinkedIn about AI, markets, and tech &mdash; following
@@ -348,7 +361,7 @@
     <section id="contact" class="section contact" aria-labelledby="contact-title">
       <div class="container">
         <p class="eyebrow reveal">Contact</p>
-        <h2 id="contact-title" class="section-title reveal">Let&rsquo;s talk.</h2>
+        <h2 id="contact-title" class="section-title reveal">Let&rsquo;s talk.<button class="anchor-link" data-anchor="contact" aria-label="Copy link to Contact section">#</button></h2>
         <p class="contact-lede reveal">
           Happy to connect about markets, opportunities, or anything in
           between &mdash; LinkedIn is the fastest way to reach me.
@@ -364,6 +377,9 @@
           </a>
           <a class="btn btn-ghost" href="assets/krispin-resume.pdf" download>
             Download r&eacute;sum&eacute;
+          </a>
+          <a class="btn btn-ghost" href="assets/krispin.vcf" download>
+            Save contact
           </a>
         </div>
       </div>

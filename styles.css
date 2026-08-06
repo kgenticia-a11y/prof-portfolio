@@ -834,6 +834,90 @@ a:where(:not(.btn)):hover { color: var(--accent); }
 }
 
 /* ============================================================
+   Section anchor links — copy-link-to-heading
+   ============================================================ */
+.anchor-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.9em;
+  margin-inline-start: 0.3em;
+  font-family: var(--font-sans);
+  font-size: 0.5em;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--accent);
+  vertical-align: super;
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.section-title:hover .anchor-link,
+.anchor-link:focus-visible {
+  opacity: 1;
+}
+.anchor-link:hover { color: var(--ink); }
+.impact-band .anchor-link { color: #FFFFFF; }
+.impact-band .anchor-link:hover { color: #FFFFFF; opacity: 0.7; }
+
+.anchor-link.is-copied::after {
+  content: "Copied";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--bg);
+  background: var(--ink);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Ticker-tape motif (Work section) — decorative only, real
+   symbols, no prices or invented figures.
+   ============================================================ */
+.ticker {
+  margin-top: var(--space-6);
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  padding-block: var(--space-3);
+}
+.ticker__track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 34s linear infinite;
+}
+.ticker:hover .ticker__track { animation-play-state: paused; }
+
+.ticker__list {
+  display: flex;
+  gap: var(--space-6);
+  padding-inline-end: var(--space-6);
+  flex-shrink: 0;
+}
+.ticker__list span {
+  font-family: var(--font-sans);
+  font-size: var(--step--2);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============================================================
    Motion: reveals (used from Batch 1 onward)
    ============================================================ */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease); }

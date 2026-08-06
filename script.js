@@ -164,6 +164,40 @@
     nodes.forEach((el) => io.observe(el));
   }
 
+  /** Copy-link-to-section buttons next to each section heading. */
+  function initAnchorLinks() {
+    const buttons = document.querySelectorAll(".anchor-link");
+    const status = document.querySelector("[data-anchor-status]");
+    if (!buttons.length) return;
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        const id = btn.getAttribute("data-anchor");
+        if (!id) return;
+        const url = location.origin + location.pathname + "#" + id;
+
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(url);
+          }
+        } catch (err) {
+          // Clipboard unavailable — the URL still updates below.
+        }
+
+        history.replaceState(null, "", "#" + id);
+
+        btn.classList.add("is-copied");
+        if (status) status.textContent = "Link copied to clipboard.";
+        window.clearTimeout(btn._resetTimer);
+        btn._resetTimer = window.setTimeout(() => {
+          btn.classList.remove("is-copied");
+          if (status) status.textContent = "";
+        }, 1500);
+      });
+    });
+  }
+
   /** Batch 7: auto-update footer copyright year. */
   function initFooterYear() {
     const el = document.querySelector("[data-year]");
@@ -176,6 +210,7 @@
     initActiveNav();
     initProgressBar();
     initCountUp();
+    initAnchorLinks();
     initFooterYear();
   }
 
