@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+# TODO: swap for the custom domain (e.g. https://krispinibyiza.com/sitemap.xml)
+# once one is attached — see README "Custom domain" section.
+Sitemap: https://kgenticia-a11y.github.io/prof-portfolio/sitemap.xml

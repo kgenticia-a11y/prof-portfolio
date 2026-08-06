@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: swap <loc> for the custom domain once one is attached (see README). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://example.com/</loc>
+    <loc>https://kgenticia-a11y.github.io/prof-portfolio/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>

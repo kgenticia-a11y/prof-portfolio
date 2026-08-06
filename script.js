@@ -77,7 +77,27 @@
 
   /** Batch 8: active nav link highlighting based on section in view. */
   function initActiveNav() {
-    // TODO(Batch 8): observe section anchors and mark matching nav link as [aria-current="page"].
+    const sections = document.querySelectorAll("main section[id]");
+    const navLinks = document.querySelectorAll(".nav__list a[href^='#']");
+    if (!sections.length || !navLinks.length || !("IntersectionObserver" in window)) return;
+
+    const linkFor = (id) =>
+      Array.from(navLinks).find((a) => a.getAttribute("href") === "#" + id);
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const link = linkFor(entry.target.id);
+          if (!link) return;
+          navLinks.forEach((a) => a.removeAttribute("aria-current"));
+          link.setAttribute("aria-current", "page");
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+    );
+
+    sections.forEach((section) => io.observe(section));
   }
 
   /** Batch 1: thin scroll-progress bar at the very top. */
