@@ -12,13 +12,67 @@
 
   /** Batch 1: mobile nav toggle (hamburger). */
   function initNavToggle() {
-    // TODO(Batch 1): wire up hamburger + accessible aria-expanded menu.
+    const toggle = document.querySelector("[data-nav-toggle]");
+    const menu = document.getElementById("primary-menu");
+    const header = document.querySelector(".site-header");
+    if (!toggle || !menu) return;
+
+    const setOpen = (open) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      menu.classList.toggle("is-open", open);
+      document.documentElement.style.overflow = open ? "hidden" : "";
+    };
+
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    menu.addEventListener("click", (e) => {
+      if (e.target instanceof HTMLAnchorElement) setOpen(false);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Close the menu if the viewport grows out of mobile range.
+    const mq = window.matchMedia("(min-width: 761px)");
+    const onChange = () => { if (mq.matches) setOpen(false); };
+    if (mq.addEventListener) mq.addEventListener("change", onChange);
+    else mq.addListener(onChange);
+
+    // Header border on scroll.
+    if (header) {
+      const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 4);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
   }
 
-  /** Batch 8: fade/slide-in on scroll via IntersectionObserver. */
+  /** Batch 1/8: fade/slide-in on scroll via IntersectionObserver. */
   function initScrollReveal() {
-    if (prefersReducedMotion) return;
-    // TODO(Batch 8): observe [data-reveal] / .reveal and toggle .is-visible.
+    const targets = document.querySelectorAll(".reveal");
+    if (!targets.length) return;
+
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      targets.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+
+    targets.forEach((el) => io.observe(el));
   }
 
   /** Batch 8: active nav link highlighting based on section in view. */
@@ -28,7 +82,25 @@
 
   /** Batch 1: thin scroll-progress bar at the very top. */
   function initProgressBar() {
-    // TODO(Batch 1): update --scroll-progress on scroll; bar reads from CSS.
+    const bar = document.getElementById("scroll-progress");
+    if (!bar) return;
+    let ticking = false;
+    const update = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = height > 0 ? Math.min(100, Math.max(0, (scrollTop / height) * 100)) : 0;
+      bar.style.setProperty("--scroll-progress", pct + "%");
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
   }
 
   /** Batch 5: count-up on scroll for impact metrics. */

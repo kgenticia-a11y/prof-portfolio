@@ -17,15 +17,76 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true">
+    <span class="scroll-progress__bar"></span>
+  </div>
+
   <header class="site-header" role="banner">
-    <!-- Batch 1: sticky nav + progress bar -->
+    <div class="container nav">
+      <a class="nav__brand" href="#top" aria-label="Krispin Ibyiza — home">
+        <span class="nav__mono" aria-hidden="true">KI</span>
+        <span class="nav__name">Krispin Ibyiza</span>
+      </a>
+
+      <button
+        class="nav__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-menu"
+        aria-label="Open menu"
+        data-nav-toggle
+      >
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+        <span class="nav__toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav__menu" id="primary-menu" aria-label="Primary">
+        <ul role="list" class="nav__list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#focus">Focus</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#impact">Impact</a></li>
+          <li><a href="#writing">Writing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main id="main">
-    <section id="hero" class="section" aria-labelledby="hero-title">
-      <!-- Batch 1: hero -->
-      <div class="container">
-        <h1 id="hero-title" class="display">Krispin Ibyiza</h1>
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__copy stack-lg">
+          <p class="eyebrow reveal">Physics · Finance · Consulting</p>
+          <h1 id="hero-title" class="display reveal">Krispin Ibyiza</h1>
+          <p class="hero__role reveal">
+            Physics Major · Amherst College, Class of &rsquo;27 (Junior)
+            <!-- TODO: Krispin confirm grad year -->
+          </p>
+          <p class="hero__lede reveal">
+            I&rsquo;m a physics major who likes solving problems. That instinct
+            pulled me toward the biggest problems there are &mdash; markets,
+            companies, and how businesses work at scale.
+          </p>
+          <div class="hero__ctas reveal">
+            <a class="btn btn-primary" href="#work">View work</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/krispin-ibyiza-bb4354380/" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+              <span aria-hidden="true">&nearr;</span>
+            </a>
+          </div>
+          <p class="hero__meta reveal">Amherst, MA</p>
+        </div>
+
+        <!-- Optional headshot slot. Styled to look intentional even when empty. -->
+        <figure class="hero__portrait reveal" aria-hidden="true">
+          <div class="hero__portrait-frame">
+            <span class="hero__portrait-mono">KI</span>
+          </div>
+          <figcaption class="hero__portrait-caption">
+            <!-- TODO: headshot — replace this figure with an <img> when a professional headshot is supplied. -->
+          </figcaption>
+        </figure>
       </div>
     </section>
 
