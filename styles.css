@@ -466,6 +466,54 @@ a:where(:not(.btn)):hover { color: var(--accent); }
 .hero .reveal:nth-child(6) { transition-delay: 300ms; }
 
 /* ============================================================
+   About (Batch 2)
+   ============================================================ */
+.about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(var(--space-6), 6vw, var(--space-9));
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .about__grid { grid-template-columns: 1fr; }
+}
+
+.about__intro .section-title { margin-top: var(--space-3); max-width: 16ch; }
+.about__body { margin-top: var(--space-6); }
+.about__body p { max-width: 58ch; color: var(--ink); }
+
+.about__aside { position: relative; }
+@media (min-width: 861px) {
+  .about__aside { margin-top: calc(var(--step-4) + var(--space-6)); }
+}
+
+.pull-quote {
+  margin: 0;
+  padding: var(--space-5) 0 var(--space-5) var(--space-5);
+  border-left: 2px solid var(--accent);
+}
+.pull-quote p {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--step-2);
+  line-height: 1.34;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  font-variation-settings: "opsz" 40;
+  font-style: italic;
+  max-width: none;
+}
+.pull-quote__cite {
+  display: block;
+  margin-top: var(--space-4);
+  font-size: var(--step--1);
+  font-style: normal;
+  color: var(--muted);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+/* ============================================================
    Motion: reveals (used from Batch 1 onward)
    ============================================================ */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease); }
