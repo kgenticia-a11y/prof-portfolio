@@ -675,6 +675,40 @@ a:where(:not(.btn)):hover { color: var(--accent); }
 .case-card__link:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ============================================================
+   Impact metrics band (Batch 5)
+   ============================================================ */
+.impact-band {
+  background: var(--accent);
+  color: #FFFFFF;
+  border-top-color: transparent;
+}
+.impact-band .eyebrow { color: color-mix(in srgb, #FFFFFF 65%, transparent); }
+.impact-band .section-title { color: #FFFFFF; }
+
+.stat-grid {
+  margin-top: var(--space-8);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-6) var(--space-5);
+}
+
+.stat-block { text-align: left; }
+.stat-block__value {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-variation-settings: "opsz" 60;
+}
+.stat-block__label {
+  margin-top: var(--space-3);
+  font-size: var(--step--1);
+  color: color-mix(in srgb, #FFFFFF 78%, transparent);
+  max-width: 22ch;
+}
+
+/* ============================================================
    Motion: reveals (used from Batch 1 onward)
    ============================================================ */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease); }

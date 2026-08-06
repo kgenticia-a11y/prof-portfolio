@@ -103,10 +103,45 @@
     window.addEventListener("resize", onScroll, { passive: true });
   }
 
-  /** Batch 5: count-up on scroll for impact metrics. */
+  /** Batch 5: count-up on scroll for impact metrics.
+   *  Markup already contains the true final value as static text, so this
+   *  is purely decorative: reduced-motion (or no JS) users just see the
+   *  correct number the whole time — nothing depends on the animation. */
   function initCountUp() {
     if (prefersReducedMotion) return;
-    // TODO(Batch 5): animate [data-count] from 0 → target when in view.
+
+    const nodes = document.querySelectorAll(".js-count");
+    if (!nodes.length || !("IntersectionObserver" in window)) return;
+
+    const animate = (el) => {
+      const target = parseFloat(el.getAttribute("data-count-to") || "0");
+      const suffix = el.getAttribute("data-count-suffix") || "";
+      const duration = 900;
+      const start = performance.now();
+
+      el.textContent = "0" + suffix;
+
+      const step = (now) => {
+        const elapsed = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - elapsed, 3); // ease-out cubic
+        const value = Math.round(target * eased);
+        el.textContent = value + suffix;
+        if (elapsed < 1) window.requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      };
+      window.requestAnimationFrame(step);
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    nodes.forEach((el) => io.observe(el));
   }
 
   /** Batch 7: auto-update footer copyright year. */
