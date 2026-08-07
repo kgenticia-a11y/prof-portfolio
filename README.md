@@ -16,10 +16,18 @@ python3 -m http.server 8000
 index.html   styles.css   script.js
 robots.txt   sitemap.xml   404.html   CNAME
 /assets/
+  headshot.jpg           profile photo (placeholder — see below)
   favicon.svg            KI monogram, used as the site favicon
   og-image.png           Open Graph / Twitter card image
   krispin-resume.pdf      placeholder — swap for the real résumé
 ```
+
+### Update your photo
+
+To change the profile picture, replace `assets/headshot.jpg` with your own
+file using the same filename (or update the `src` in `index.html`).
+Recommended: square, at least 600×600px. Rectangular images are handled via
+`object-fit: cover` so they frame cleanly without distortion.
 
 All theme values (colors, fonts, spacing, radii, motion durations) live in
 `:root` in `styles.css` — a `[data-theme="dark"]` variant is scaffolded
