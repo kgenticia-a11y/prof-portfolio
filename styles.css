@@ -868,6 +868,11 @@ a:where(:not(.btn)):hover { color: var(--accent); }
 }
 .footer__list a:hover,
 .footer__linkedin:hover { color: var(--ink); }
+.footer__social {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-5);
+}
 .footer__linkedin {
   display: inline-flex;
   align-items: center;
