@@ -68,51 +68,48 @@ Already done for this project: the site lives at
 pushed to `main`. (For a fresh copy elsewhere: `git init`, commit, create a
 GitHub repo, `git push -u origin main`.)
 
-### 3. GitHub Pages
+### 3. GitHub Pages (automated)
 
-1. In the repo, go to **Settings → Pages**.
-2. Under **Build and deployment → Source**, choose **Deploy from a branch**.
-3. Set **Branch** to `main` and the folder to `/ (root)`. **Save**.
-4. GitHub builds and publishes the site at
-   `https://kgenticia-a11y.github.io/prof-portfolio/` — usually live within
-   a minute or two. Re-visit **Settings → Pages** to confirm the green
-   "Your site is live at…" banner before moving on.
+Deployment is handled by the GitHub Actions workflow at
+`.github/workflows/deploy-pages.yml`. It runs on every push to `main`,
+turns Pages on automatically (`enablement: true`), and publishes the repo
+root as-is — **no manual Settings → Pages toggle is needed.**
 
-### 4. Custom domain
+- Watch a run under the repo's **Actions** tab. When the `Deploy to GitHub
+  Pages` job is green, the site is live.
+- Before the custom domain resolves, the default URL is
+  `https://kgenticia-a11y.github.io/prof-portfolio/`.
 
-Do these in order — attaching DNS before GitHub knows the domain risks a
-dangling-CNAME takeover window.
+### 4. Custom domain — `krispinibyiza.ksystems.live`
 
-1. **In GitHub first:** **Settings → Pages → Custom domain**, enter the
-   domain (e.g. `krispinibyiza.com`) and **Save**. This writes the domain
-   into the `CNAME` file at the repo root — keep that file, it must contain
-   only the bare domain, nothing else.
-2. **Then at the DNS provider:**
-   - **Apex domain** (`krispinibyiza.com`): add four **A** records pointing
-     to GitHub Pages' IPs:
-     ```
-     185.199.108.153
-     185.199.109.153
-     185.199.110.153
-     185.199.111.153
-     ```
-     Optionally add the matching **AAAA** records for IPv6:
-     ```
-     2606:50c0:8000::153
-     2606:50c0:8001::153
-     2606:50c0:8002::153
-     2606:50c0:8003::153
-     ```
-   - **`www` subdomain**: add a **CNAME** record pointing to
-     `kgenticia-a11y.github.io`.
-3. **Verify DNS propagation:**
+The repo already contains a `CNAME` file with `krispinibyiza.ksystems.live`,
+so GitHub is told about the domain on the next deploy. The **one remaining
+step is DNS**, which must be done at whoever manages `ksystems.live`:
+
+1. **Add a DNS record** for the subdomain (this is a subdomain, so it's a
+   single **CNAME** record — *not* the four apex A-records):
+
+   | Type  | Name (host)     | Value / Target              |
+   |-------|-----------------|-----------------------------|
+   | CNAME | `krispinibyiza` | `kgenticia-a11y.github.io.`  |
+
+   (Some DNS panels want the full `krispinibyiza.ksystems.live` in the Name
+   field; others want just `krispinibyiza`. Both mean the same host.)
+
+2. **Verify propagation:**
    ```bash
-   dig krispinibyiza.com +noall +answer
+   dig krispinibyiza.ksystems.live +noall +answer
    ```
-   Confirm the answers match the four A records above. DNS can take up to
-   ~24–48 hours to fully propagate.
-4. Once **Settings → Pages** shows a green check next to the custom domain
-   (DNS verified), enable **Enforce HTTPS**.
+   You should see a CNAME pointing at `kgenticia-a11y.github.io`. DNS can
+   take anywhere from a few minutes to ~24–48 hours.
+
+3. Once **Settings → Pages** shows the green "DNS check successful" next to
+   the custom domain, enable **Enforce HTTPS**. GitHub provisions the TLS
+   certificate automatically.
+
+> Do the DNS step *after* the `CNAME` file is in the repo (it already is).
+> Pointing DNS at GitHub Pages before the domain is claimed in the repo can
+> open a brief subdomain-takeover window.
 
 ### Alternatives: Netlify / Cloudflare Pages
 
