@@ -613,6 +613,9 @@ a:where(:not(.btn)):hover { color: var(--accent); }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: var(--space-6);
+  /* Don't stretch cards to equal height — otherwise a shorter card's
+     media frame gets pulled out of its 16:10 aspect ratio. */
+  align-items: start;
 }
 
 .case-card {
@@ -630,18 +633,25 @@ a:where(:not(.btn)):hover { color: var(--accent); }
 }
 
 .case-card__media {
+  position: relative;
   aspect-ratio: 16 / 10;
   display: grid;
   place-items: center;
+  overflow: hidden;
   background:
     radial-gradient(900px 300px at 0% 0%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 60%),
     var(--surface);
   border-bottom: 1px solid var(--line);
 }
+/* Absolutely positioned so the image fills the 16:10 frame instead of its
+   own intrinsic aspect ratio dictating the frame height. */
 .case-card__media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 .case-card__media-mono {
   font-family: var(--font-serif);
