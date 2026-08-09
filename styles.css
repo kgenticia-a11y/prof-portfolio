@@ -699,6 +699,7 @@ a:where(:not(.btn)):hover { color: var(--accent); }
 }
 .status-pill--live { color: var(--accent); }
 .status-pill--ongoing { color: var(--muted); }
+.status-pill--research { color: var(--muted); }
 
 .case-card h3 {
   font-size: var(--step-1);
