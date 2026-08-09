@@ -204,6 +204,26 @@
     if (el) el.textContent = String(new Date().getFullYear());
   }
 
+  /** Writing essays: expand/collapse toggle. */
+  function initEssayExpand() {
+    const buttons = document.querySelectorAll(".thinking-card__expand");
+    if (!buttons.length) return;
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("aria-controls");
+        const panel = targetId ? document.getElementById(targetId) : null;
+        if (!panel) return;
+        const isExpanded = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!isExpanded));
+        panel.hidden = isExpanded;
+        btn.innerHTML = isExpanded
+          ? 'Read more <span aria-hidden="true">&#8595;</span>'
+          : 'Read less <span aria-hidden="true">&#8593;</span>';
+      });
+    });
+  }
+
   function boot() {
     initNavToggle();
     initScrollReveal();
@@ -212,6 +232,7 @@
     initCountUp();
     initAnchorLinks();
     initFooterYear();
+    initEssayExpand();
   }
 
   if (document.readyState === "loading") {
