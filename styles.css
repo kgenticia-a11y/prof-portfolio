@@ -116,6 +116,27 @@ body {
   min-height: 100vh;
 }
 
+/* Ambient professional backdrop: soft accent-tinted washes anchored to the
+   corners, over a whisper-fine grid (graph-paper / market-chart nod). Fixed
+   so it stays put on scroll; sits behind all content and ignores pointer. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(62vw 58vh at 100% -8%,
+      color-mix(in srgb, var(--accent) 8%, transparent), transparent 62%),
+    radial-gradient(58vw 55vh at -8% 108%,
+      color-mix(in srgb, var(--accent) 6%, transparent), transparent 60%),
+    linear-gradient(color-mix(in srgb, var(--ink) 3.5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--ink) 3.5%, transparent) 1px, transparent 1px),
+    var(--bg);
+  background-size: 100% 100%, 100% 100%, 72px 72px, 72px 72px, 100% 100%;
+  background-position: 0 0, 0 0, center, center, 0 0;
+}
+
 h1, h2, h3, .display, .section-title {
   font-family: var(--font-serif);
   font-weight: 500;
