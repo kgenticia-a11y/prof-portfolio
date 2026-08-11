@@ -116,25 +116,39 @@ body {
   min-height: 100vh;
 }
 
-/* Ambient professional backdrop: soft accent-tinted washes anchored to the
-   corners, over a whisper-fine grid (graph-paper / market-chart nod). Fixed
-   so it stays put on scroll; sits behind all content and ignores pointer. */
+/* Ambient professional backdrop, two fixed layers behind all content:
+   ::before — a soft three-point accent aurora over a fine dot-grid (a more
+   refined, premium alternative to ruled graph paper); ::after — a whisper of
+   paper grain (SVG fractal noise) for tactile depth. Both ignore the pointer
+   and are token-driven, so light and dark themes recolor automatically. */
 body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(70vw 62vh at 100% -10%,
+      color-mix(in srgb, var(--accent) 11%, transparent), transparent 60%),
+    radial-gradient(60vw 56vh at -10% 110%,
+      color-mix(in srgb, var(--accent) 8%, transparent), transparent 58%),
+    radial-gradient(46vw 42vh at 50% -4%,
+      color-mix(in srgb, var(--accent) 4%, transparent), transparent 55%),
+    radial-gradient(circle,
+      color-mix(in srgb, var(--ink) 7%, transparent) 1px, transparent 1.6px),
+    var(--bg);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 26px 26px, 100% 100%;
+  background-position: 0 0, 0 0, 0 0, center, 0 0;
+}
+
+body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background:
-    radial-gradient(62vw 58vh at 100% -8%,
-      color-mix(in srgb, var(--accent) 8%, transparent), transparent 62%),
-    radial-gradient(58vw 55vh at -8% 108%,
-      color-mix(in srgb, var(--accent) 6%, transparent), transparent 60%),
-    linear-gradient(color-mix(in srgb, var(--ink) 3.5%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--ink) 3.5%, transparent) 1px, transparent 1px),
-    var(--bg);
-  background-size: 100% 100%, 100% 100%, 72px 72px, 72px 72px, 100% 100%;
-  background-position: 0 0, 0 0, center, center, 0 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 h1, h2, h3, .display, .section-title {
