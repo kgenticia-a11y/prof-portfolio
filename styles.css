@@ -1256,6 +1256,25 @@ a:where(:not(.btn)):hover { color: var(--accent); }
   object-fit: cover;
 }
 
+.book-card__cover--fallback {
+  background: linear-gradient(135deg, var(--accent) 0%, #1a4a6b 100%);
+}
+.book-card__cover--fallback img { display: none; }
+.book-card__cover--fallback::after {
+  content: attr(data-title);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  font-size: var(--step--2);
+  font-weight: 600;
+  color: var(--accent-ink);
+  text-align: center;
+  line-height: var(--lh-snug);
+}
+
 .book-card__info {
   display: flex;
   flex-direction: column;
