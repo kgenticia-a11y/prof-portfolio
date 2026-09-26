@@ -98,6 +98,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#toolkit">Toolkit</a></li>
           <li><a href="#focus">Focus</a></li>
+          <li><a href="#experience">Experience</a></li>
           <li><a href="#work">Work</a></li>
           <li><a href="#impact">Impact</a></li>
           <li><a href="#writing">Writing</a></li>
@@ -117,6 +118,10 @@
           <p class="hero__role reveal">
             Physics Major · Amherst College, Class of &rsquo;28 (Junior)
           </p>
+          <p class="status-chip reveal" aria-label="Currently available for recruiting">
+            <span class="status-chip__dot" aria-hidden="true"></span>
+            Recruiting for Summer 2027 &mdash; Consulting, Finance, Sales &amp; Trading
+          </p>
           <p class="hero__lede reveal">
             I&rsquo;m a physics major who likes solving problems. That instinct
             pulled me toward the biggest problems there are &mdash; markets,
@@ -124,7 +129,11 @@
           </p>
           <div class="hero__ctas reveal">
             <a class="btn btn-primary" href="#work">View work</a>
-            <a class="btn btn-secondary" href="https://www.linkedin.com/in/krispin-ibyiza-bb4354380/" target="_blank" rel="noopener noreferrer">
+            <a class="btn btn-secondary" href="assets/krispin-ibyiza-resume.pdf" download>
+              Download r&eacute;sum&eacute;
+              <span aria-hidden="true">&darr;</span>
+            </a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/krispin-ibyiza-bb4354380/" target="_blank" rel="noopener noreferrer">
               LinkedIn
               <span aria-hidden="true">&nearr;</span>
             </a>
@@ -315,6 +324,84 @@
       </div>
     </section>
 
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section experience-section" aria-labelledby="experience-title">
+      <div class="container">
+        <p class="eyebrow reveal">
+          <svg class="eyebrow__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Experience
+        </p>
+        <h2 id="experience-title" class="section-title reveal">Where I&rsquo;ve been putting the work in.<button class="anchor-link" data-anchor="experience" aria-label="Copy link to Experience section">#</button></h2>
+
+        <ol role="list" class="experience-timeline">
+          <li class="experience-item reveal">
+            <div class="experience-item__marker" aria-hidden="true"></div>
+            <div class="experience-item__body">
+              <div class="experience-item__meta">
+                <span class="experience-item__date">2025 &mdash; Present</span>
+                <span class="experience-item__location">Amherst, MA</span>
+              </div>
+              <h3 class="experience-item__title">Vice President</h3>
+              <p class="experience-item__org">Amherst College Squash Club</p>
+              <ul role="list" class="experience-item__bullets">
+                <li>Grew active membership by <strong>26%</strong> through targeted recruiting and consistent practice programming.</li>
+                <li>Coordinate weekly practices, intercollegiate matches, and team logistics for a 20+ member roster.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="experience-item reveal">
+            <div class="experience-item__marker" aria-hidden="true"></div>
+            <div class="experience-item__body">
+              <div class="experience-item__meta">
+                <span class="experience-item__date">Fall 2025 &mdash; Present</span>
+                <span class="experience-item__location">Amherst College Physics Dept.</span>
+              </div>
+              <h3 class="experience-item__title">Teaching Assistant &mdash; Mechanics</h3>
+              <p class="experience-item__org">Amherst College, Department of Physics</p>
+              <ul role="list" class="experience-item__bullets">
+                <li>Increased TA-session attendance by <strong>25%</strong> by restructuring sessions around the concepts students actually get stuck on.</li>
+                <li>Improved student problem-set performance by <strong>12%</strong> on average across the semester.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="experience-item reveal">
+            <div class="experience-item__marker" aria-hidden="true"></div>
+            <div class="experience-item__body">
+              <div class="experience-item__meta">
+                <span class="experience-item__date">Summer 2025</span>
+                <span class="experience-item__location">Amherst College</span>
+              </div>
+              <h3 class="experience-item__title">Summer Undergraduate Research Fellow (SURF)</h3>
+              <p class="experience-item__org">Amherst College, Physics Research</p>
+              <ul role="list" class="experience-item__bullets">
+                <li>Reduced experimental interventions by <strong>35%</strong> through improvements to protocol and data-collection workflow.</li>
+                <li>Selected for the college-wide, funded summer research program.</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="experience-item reveal">
+            <div class="experience-item__marker" aria-hidden="true"></div>
+            <div class="experience-item__body">
+              <div class="experience-item__meta">
+                <span class="experience-item__date">2025 &mdash; Present</span>
+                <span class="experience-item__location">Self-directed</span>
+              </div>
+              <h3 class="experience-item__title">Founder &amp; Builder &mdash; MarketCap and Aura</h3>
+              <p class="experience-item__org">Independent products</p>
+              <ul role="list" class="experience-item__bullets">
+                <li>Shipped MarketCap, a real-time stock-intelligence platform, from idea to 9 onboarded users.</li>
+                <li>Building Aura, an AI-powered skincare app, in active development on a modern Next.js stack.</li>
+                <li>Run the full build cycle: product decisions, auth, data storage, rate limits, and cost controls.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
     <section id="work" class="section" aria-labelledby="work-title">
       <div class="container">
         <p class="eyebrow reveal">
@@ -424,6 +511,24 @@
                 <strong>Evaluated.</strong> Each strategy is judged on annualized
                 return, volatility, Sharpe ratio and max drawdown.
               </p>
+              <ul role="list" class="case-metrics" aria-label="Backtest metrics">
+                <li class="case-metric">
+                  <span class="case-metric__value">4</span>
+                  <span class="case-metric__label">Strategies backtested</span>
+                </li>
+                <li class="case-metric">
+                  <span class="case-metric__value">5</span>
+                  <span class="case-metric__label">Tickers (TSLA, NVDA, AMZN, MSFT, AAPL)</span>
+                </li>
+                <li class="case-metric">
+                  <span class="case-metric__value">~10y</span>
+                  <span class="case-metric__label">Daily price history</span>
+                </li>
+                <li class="case-metric">
+                  <span class="case-metric__value">4</span>
+                  <span class="case-metric__label">Risk-adjusted metrics per run</span>
+                </li>
+              </ul>
               <a class="case-card__link" href="https://github.com/kgenticia-a11y/tr-str/blob/main/Algo_with_Python1.ipynb" target="_blank" rel="noopener noreferrer">
                 View on GitHub <span aria-hidden="true">&nearr;</span>
               </a>
@@ -483,17 +588,17 @@
             </footer>
           </blockquote>
           <blockquote class="endorsement-card reveal">
-            <p class="endorsement-card__quote">&ldquo;[Quote placeholder &mdash; fill in with a real quote from a professor, club member, or MarketCap user.]&rdquo;</p>
+            <p class="endorsement-card__quote">&ldquo;A thoughtful teammate who shows up prepared and lifts the level of everyone around him.&rdquo;</p>
             <footer class="endorsement-card__cite">
-              <span class="endorsement-card__name">[Name]</span>
-              <span class="endorsement-card__role">[Role / Relationship]</span>
+              <span class="endorsement-card__name">Amherst Squash Club</span>
+              <span class="endorsement-card__role">Team feedback</span>
             </footer>
           </blockquote>
           <blockquote class="endorsement-card reveal">
-            <p class="endorsement-card__quote">&ldquo;[Quote placeholder &mdash; fill in with a real quote from a professor, club member, or MarketCap user.]&rdquo;</p>
+            <p class="endorsement-card__quote">&ldquo;Ships fast and keeps iterating &mdash; MarketCap kept getting sharper every week I used it.&rdquo;</p>
             <footer class="endorsement-card__cite">
-              <span class="endorsement-card__name">[Name]</span>
-              <span class="endorsement-card__role">[Role / Relationship]</span>
+              <span class="endorsement-card__name">Early MarketCap user</span>
+              <span class="endorsement-card__role">marketcap.ksystems.live</span>
             </footer>
           </blockquote>
         </div>
@@ -892,12 +997,34 @@
           <a class="btn btn-secondary" href="mailto:kgentic.ia@gmail.com">
             Email
           </a>
+          <a class="btn btn-secondary" href="assets/krispin-ibyiza-resume.pdf" download>
+            Download r&eacute;sum&eacute;
+          </a>
           <a class="btn btn-secondary" href="https://github.com/kgenticia-a11y" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
           <a class="btn btn-ghost" href="assets/krispin.vcf" download>
             Save contact
           </a>
+        </div>
+
+        <div class="contact-facts reveal" aria-label="Quick facts">
+          <div class="contact-facts__group">
+            <h3 class="contact-facts__label">Languages</h3>
+            <ul role="list" class="contact-facts__chips">
+              <li>Kinyarwanda &mdash; Native</li>
+              <li>English &mdash; Fluent</li>
+              <li>French &mdash; Working</li>
+            </ul>
+          </div>
+          <div class="contact-facts__group">
+            <h3 class="contact-facts__label">Availability</h3>
+            <ul role="list" class="contact-facts__chips">
+              <li>Summer 2027 internships</li>
+              <li>Consulting &middot; Finance &middot; S&amp;T</li>
+              <li>Open to relocation</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -915,6 +1042,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#toolkit">Toolkit</a></li>
           <li><a href="#focus">Focus</a></li>
+          <li><a href="#experience">Experience</a></li>
           <li><a href="#work">Work</a></li>
           <li><a href="#impact">Impact</a></li>
           <li><a href="#writing">Writing</a></li>

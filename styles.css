@@ -1311,6 +1311,193 @@ a:where(:not(.btn)):hover { color: var(--accent); }
 }
 
 /* ============================================================
+   Status chip (hero availability indicator)
+   ============================================================ */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px var(--space-3);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line));
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-radius: 999px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--ink);
+  width: fit-content;
+}
+.status-chip__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px color-mix(in srgb, #22c55e 25%, transparent);
+  animation: status-pulse 2.4s var(--ease) infinite;
+  flex-shrink: 0;
+}
+@keyframes status-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px color-mix(in srgb, #22c55e 25%, transparent); }
+  50%      { box-shadow: 0 0 0 6px color-mix(in srgb, #22c55e 10%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .status-chip__dot { animation: none; }
+}
+
+/* ============================================================
+   Experience timeline
+   ============================================================ */
+.experience-timeline {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+  position: relative;
+  padding-left: 0;
+}
+.experience-item {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: var(--space-5);
+  position: relative;
+}
+.experience-item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 22px;
+  bottom: -24px;
+  width: 1px;
+  background: var(--line);
+}
+.experience-item__marker {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--bg);
+  margin-top: 8px;
+  margin-left: 4px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.experience-item__body {
+  min-width: 0;
+}
+.experience-item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  font-size: var(--step--2);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  margin-bottom: var(--space-2);
+}
+.experience-item__date {
+  color: var(--ink);
+  font-weight: 600;
+}
+.experience-item__title {
+  font-family: var(--font-serif);
+  font-size: var(--step-2);
+  font-weight: 500;
+  line-height: var(--lh-snug);
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.experience-item__org {
+  font-size: var(--step--1);
+  color: var(--muted);
+  margin-bottom: var(--space-3);
+}
+.experience-item__bullets {
+  display: grid;
+  gap: var(--space-2);
+  padding-left: 0;
+}
+.experience-item__bullets li {
+  position: relative;
+  padding-left: var(--space-4);
+  color: var(--ink);
+  line-height: var(--lh-body);
+}
+.experience-item__bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ============================================================
+   Case metrics badges (on case cards)
+   ============================================================ */
+.case-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+  padding: 0;
+}
+.case-metric {
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+}
+.case-metric__value {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: var(--step-2);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.case-metric__label {
+  display: block;
+  font-size: var(--step--2);
+  color: var(--muted);
+  line-height: var(--lh-snug);
+}
+
+/* ============================================================
+   Contact facts (Languages & Availability chips)
+   ============================================================ */
+.contact-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+.contact-facts__label {
+  font-size: var(--step--2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--muted);
+  margin-bottom: var(--space-3);
+}
+.contact-facts__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: 0;
+}
+.contact-facts__chips li {
+  padding: 4px var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: var(--step--1);
+  color: var(--ink);
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+}
+
+/* ============================================================
    Motion: reveals (used from Batch 1 onward)
    ============================================================ */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease); }
